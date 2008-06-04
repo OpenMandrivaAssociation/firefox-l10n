@@ -1,7 +1,7 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
-%define prel rc1
+%define prel rc2
 %define oname firefox
 %define name %{oname}-l10n
 %define version 3.0
@@ -15,10 +15,10 @@
 %endif
 
 # Supported l10n language lists
-%define langlist	ar af be ca cs da de el en_GB es_ES es_AR eu fi fr fy ga_IE gu_IN he hu id it ja ka ko ku lt mn mk nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru sk sv_SE tr uk zh_CN zh_TW
+%define langlist	ar af be ca cs da de el en_GB es_ES es_AR eu fi fr fy ga_IE gu_IN he hu id it ja ka ko ku lt mn mk nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE tr uk zh_CN zh_TW
 
 # Disabled l10n languages, for any reason
-%define disabled_langlist	uu br_FR et_EE bg sl
+%define disabled_langlist	uu br_FR et_EE bg
 
 # Disabled myspell dicts, for any reason
 %define disabled_dict_langlist	ar be br_FR es_AR eu fi fy gu_IN he id ja ka ko ku mk mn pa_IN tr zh_CN zh_TW
@@ -104,10 +104,16 @@
 %define langname_ro Romanian
 %define language_ru ru
 %define langname_ru Russian
+%define language_si si
+%define langname_si Sinhala
 %define language_sk sk
 %define langname_sk Slovak
 %define language_sl sl
 %define langname_sl Slovenian
+%define language_sq sq
+%define langname_sq Shqipe
+%define language_sr sr
+%define langname_sr Serbian
 %define language_sv_SE sv-SE
 %define langname_sv_SE Swedish
 %define language_tr tr
