@@ -1,7 +1,7 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
-%define prel rc2
+%define prel rc3
 %define oname firefox
 %define name %{oname}-l10n
 %define version 3.0
@@ -164,7 +164,7 @@ Source0:	%{name}-template.spec
 	done\
 	)
 }
-
+Patch0:		fix-sq-invalid-rdf.patch
 BuildRequires:	libxml2-utils
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -229,6 +229,10 @@ done
 # Patches
 cd ${language_fy}
 sed -i 's/\x0D//g;/^$/d' install.rdf
+cd ..
+
+cd sq
+%patch0 -p0
 cd ..
 
 %build
