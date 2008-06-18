@@ -1,11 +1,10 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
-%define prel rc3
 %define oname firefox
 %define name %{oname}-l10n
 %define version 3.0
-%define release %mkrel -c %{prel} 1
+%define release %mkrel 1
 %define mozillalibdir %{_libdir}/%{oname}-%{version}
 
 %if %{prel}
