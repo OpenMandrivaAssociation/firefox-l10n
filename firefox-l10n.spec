@@ -1,6 +1,7 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
+%define prel 0
 %define oname firefox
 %define name %{oname}-l10n
 %define version 3.0
