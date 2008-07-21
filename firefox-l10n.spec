@@ -4,7 +4,7 @@
 %define prel 0
 %define oname firefox
 %define name %{oname}-l10n
-%define version 3.0
+%define version 3.0.1
 %define release %mkrel 1
 %define mozillalibdir %{_libdir}/%{oname}-%{version}
 
