@@ -5,7 +5,7 @@
 %define oname firefox
 %define name %{oname}-l10n
 %define version 3.0.1
-%define release %mkrel 3
+%define release %mkrel 4
 %define mozillalibdir %{_libdir}/%{oname}-%{version}
 
 %if %{prel}
@@ -15,10 +15,10 @@
 %endif
 
 # Supported l10n language lists
-%define langlist	ar af be ca cs da de el en_GB es_ES es_AR eu fi fr fy ga_IE gu_IN he hu id it ja ka ko ku lt mn mk nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE tr uk zh_CN zh_TW
+%define langlist	ar af be ca cs da de el en_GB es_ES es_AR et_EE eu fi fr fy ga_IE gu_IN he hu id it ja ka ko ku lt mn mk nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE tr uk zh_CN zh_TW
 
 # Disabled l10n languages, for any reason
-%define disabled_langlist	uu br_FR et_EE bg
+%define disabled_langlist	uu br_FR bg
 
 # Disabled myspell dicts, for any reason
 %define disabled_dict_langlist	ar be br_FR es_AR eu fi fy gu_IN he id ja ka ko ku mk mn pa_IN tr zh_CN zh_TW
