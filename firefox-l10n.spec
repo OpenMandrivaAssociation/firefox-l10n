@@ -4,8 +4,8 @@
 %define prel 0
 %define oname firefox
 %define name %{oname}-l10n
-%define version 3.0.1
-%define release %mkrel 6
+%define version 3.0.2
+%define release %mkrel 1
 %define mozillalibdir %{_libdir}/%{oname}-%{version}
 
 %if %{prel}
@@ -15,13 +15,13 @@
 %endif
 
 # Supported l10n language lists
-%define langlist	ar af be ca cs da de el en_GB es_ES es_AR et eu fi fr fy ga_IE gu_IN he hu id it ja ka ko ku lt mn mk nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE tr uk zh_CN zh_TW
+%define langlist	ar af be bn ca cs da de el en_GB es_ES es_AR et eu fi fr fy ga_IE gl gu_IN he hi hu id is it ja ka ko kn ku lt mn mk mr nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE te th tr uk zh_CN zh_TW
 
 # Disabled l10n languages, for any reason
 %define disabled_langlist	uu br_FR bg
 
 # Disabled myspell dicts, for any reason
-%define disabled_dict_langlist	ar be br_FR es_AR eu fi fy gu_IN he id ja ka ko ku mk mn pa_IN tr zh_CN zh_TW
+%define disabled_dict_langlist	ar be bn br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko ku mk mn pa_IN te tr zh_CN zh_TW
 
 # Language descriptions
 %define language_ar ar
@@ -32,6 +32,8 @@
 %define langname_be Belarusian
 %define language_bg bg
 %define langname_bg Bulgarian
+%define language_bn bn-IN
+%define langname_bn Bengali
 %define language_br_FR br-FR
 %define langname_br_FR Breton
 %define language_ca ca
@@ -62,14 +64,20 @@
 %define langname_fy Frisian
 %define language_ga_IE ga-IE
 %define langname_ga_IE Irish
+%define language_gl gl
+%define langname_gl Galician
 %define language_gu_IN gu-IN
 %define langname_gu_IN Gujarati
 %define language_he he
 %define langname_he Hebrew
+%define language_hi hi-IN
+%define langname_hi Hindi
 %define language_hu hu
 %define langname_hu Hungarian
 %define language_id id
 %define langname_id Indonesian
+%define language_is is
+%define langname_is Icelandic
 %define language_it it
 %define langname_it Italian
 %define language_ja ja
@@ -78,6 +86,8 @@
 %define langname_ka Georgian
 %define language_ko ko
 %define langname_ko Korean
+%define language_kn kn
+%define langname_kn Kannada
 %define language_ku ku
 %define langname_ku Kurdish
 %define language_lt lt
@@ -86,6 +96,8 @@
 %define langname_mk Macedonian
 %define language_mn mn
 %define langname_mn Mongolian
+%define language_mr mr
+%define langname_mr Marathi
 %define language_nb_NO nb-NO
 %define langname_nb_NO Norwegian Bokmaal
 %define language_nn_NO nn-NO
@@ -116,6 +128,10 @@
 %define langname_sr Serbian
 %define language_sv_SE sv-SE
 %define langname_sv_SE Swedish
+%define language_te te
+%define langname_te Telugu
+%define language_th th
+%define langname_th Thai
 %define language_tr tr
 %define langname_tr Turkish
 %define language_uk uk
