@@ -4,7 +4,7 @@
 %define prel 0
 %define oname firefox
 %define name %{oname}-l10n
-%define version 3.0.3
+%define version 3.0.4
 %define release %mkrel 1
 %define mozillalibdir %{_libdir}/%{oname}-%{version}
 
@@ -15,10 +15,10 @@
 %endif
 
 # Supported l10n language lists
-%define langlist	ar af be bn ca cs da de el en_GB es_ES es_AR et eu fi fr fy ga_IE gl gu_IN he hi hu id is it ja ka ko kn ku lt mn mk mr nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE te th tr uk zh_CN zh_TW
+%define langlist	ar af be bg bn ca cs cy da de el en_GB eo es_ES es_AR et eu fi fr fy ga_IE gl gu_IN he hi hu id is it ja ka ko kn ku lt lv mn mk mr nb_NO nn_NO nl oc pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE te th tr uk zh_CN zh_TW
 
 # Disabled l10n languages, for any reason
-%define disabled_langlist	uu br_FR bg
+%define disabled_langlist	uu br_FR
 
 # Disabled myspell dicts, for any reason
 %define disabled_dict_langlist	ar be bn br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko ku mk mn pa_IN te tr zh_CN zh_TW
@@ -40,6 +40,8 @@
 %define langname_ca Catalan
 %define language_cs cs
 %define langname_cs Czech
+%define language_cy cy
+%define langname_cy Welsh
 %define language_da da
 %define langname_da Dansk
 %define language_de de
@@ -48,6 +50,8 @@
 %define langname_el Greek
 %define language_en_GB en-GB
 %define langname_en_GB British English
+%define language_eo eo
+%define langname_eo Esperanto
 %define language_es_AR es-AR
 %define langname_es_AR Spanish (Argentina)
 %define language_es_ES es-ES
@@ -92,6 +96,8 @@
 %define langname_ku Kurdish
 %define language_lt lt
 %define langname_lt Lithuanian
+%define language_lv lv
+%define langname_lv Latvian
 %define language_mk mk
 %define langname_mk Macedonian
 %define language_mn mn
@@ -104,6 +110,8 @@
 %define langname_nn_NO Norwegian Nynorsk
 %define language_nl nl
 %define langname_nl Dutch
+%define language_oc oc
+%define langname_oc Occitan
 %define language_pa_IN pa-IN
 %define langname_pa_IN Punjabi (gurmukhi)
 %define language_pl pl
