@@ -1,3 +1,12 @@
+#
+# WARNING, READ FIRST:
+#
+# This is a special package that needs special treatment. Due to the amount of
+# security updates it needs, it's common to ship new upstream versions instead of patching.
+# That means this package MUST be BUILDABLE for stable official releases.
+# This also means only STABLE upstream releases, NO betas.
+# This is a discussed topic. Please, do not flame it again.
+
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
