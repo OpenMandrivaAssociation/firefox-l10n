@@ -179,10 +179,6 @@
 # auto-increment as called.
 %define src 1
 
-%define l10nsrc() Source%src: %{xpidir}/%{1}.xpi\
-%define src2 %(echo $((%src+1)))\
-%define src %{src2}
-
 Summary:	Localizations for Firefox (virtual package)
 Name:		%{name}
 Version:	%{version}
@@ -194,8 +190,10 @@ Url:		http://www.mozilla.org/
 Source0:	%{name}-template.spec
 # l10n sources
 %{expand:%(\
+	i=1; \
 	for lang in %langlist; do\
-		echo "%%{expand:%%l10nsrc %%{language_$lang}}";\
+		echo "%%{expand:Source$i: %{xpidir}/%%{language_$lang}.xpi}";\
+		i=$[i+1];\
 	done\
 	)
 }
