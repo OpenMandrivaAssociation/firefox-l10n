@@ -24,10 +24,10 @@
 %endif
 
 # Supported l10n language lists
-%define langlist	ar af be bg bn ca cs cy da de el en_GB es_ES es_AR et eu fi fr fy ga_IE gl gu_IN he hi hu id is it ja ka ko kn ku lt lv mn mk mr nb_NO nn_NO nl oc pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE te th tr uk zh_CN zh_TW
+%define langlist	ar af be bg bn ca cs cy da de el en_GB eo es_ES es_AR et eu fi fr fy ga_IE gl gu_IN he hi hu id is it ja ka ko kn ku lt lv mn mk mr nb_NO nn_NO nl oc pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE te th tr uk zh_CN zh_TW
 
 # Disabled l10n languages, for any reason
-%define disabled_langlist	uu br_FR
+# uu br_FR
 
 # Disabled myspell dicts, for any reason
 %define disabled_dict_langlist	ar be bn br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko ku mk mn pa_IN te tr zh_CN zh_TW
@@ -59,10 +59,8 @@
 %define langname_el Greek
 %define language_en_GB en-GB
 %define langname_en_GB British English
-# new in 3.0.4, don't build for now because the scheme using a template spec
-# seems to hit an RPM processing limit on x86_64 due to so many packages ...
-#define language_eo eo
-#define langname_eo Esperanto
+%define language_eo eo
+%define langname_eo Esperanto
 %define language_es_AR es-AR
 %define langname_es_AR Spanish (Argentina)
 %define language_es_ES es-ES
@@ -165,9 +163,6 @@
 # --- Danger line ---
 
 # Defaults (all languages enabled by default)
-# l10n
-%{expand:%(for lang in %langlist; do echo "%%define with_$lang 1"; done)}
-%{expand:%(for lang in %disabled_langlist; do echo "%%define with_$lang 0"; done)}
 # dicts
 %{expand:%(for lang in %langlist; do echo "%%define with_dict_$lang 0"; done)}
 %{expand:%(for lang in %disabled_dict_langlist; do echo "%%define with_dict_$lang 0"; done)}
@@ -214,15 +209,10 @@ Localizations for Firefox web browser.
 # Convert rpm macros to bash variables
 %{expand:%(for lang in %langlist; do echo "language_$lang=%%{language_$lang}"; done)}
 %{expand:%(for lang in %langlist; do echo "locale_$lang=%%{locale_$lang}"; done)}
-%{expand:%(for lang in %langlist; do echo "with_$lang=%%{with_$lang}"; done)}
 %{expand:%(for lang in %langlist; do echo "dict_$lang=%%{with_dict_$lang}"; done)}
 
 # Unpack all languages
 for lang in %langlist; do
-	with="with_$lang"
-	with=${!with}
-	[ $with -eq 0 ] && continue
-
 	language="language_$lang"
 	language=${!language}
 
@@ -273,15 +263,10 @@ rm -rf %{buildroot}
 
 # Convert rpm macros to bash variables
 %{expand:%(for lang in %langlist; do echo "language_$lang=%%{language_$lang}"; done)}
-%{expand:%(for lang in %langlist; do echo "with_$lang=%%{with_$lang}"; done)}
 %{expand:%(for lang in %langlist; do echo "dict_$lang=%%{with_dict_$lang}"; done)}
 
 # Install all languages
 for lang in %langlist; do
-	with="with_$lang"
-	with=${!with}
-	[ $with -eq 0 ] && continue
-
 	language="language_$lang"
 	language=${!language}
 
