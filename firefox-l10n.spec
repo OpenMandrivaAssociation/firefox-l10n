@@ -175,10 +175,6 @@
 # Locales
 %{expand:%(for lang in %langlist; do echo "%%define locale_$lang `echo $lang | cut -d _ -f 1` "; done)}
 
-# Macro for easy adding i18n sources
-# auto-increment as called.
-%define src 1
-
 Summary:	Localizations for Firefox (virtual package)
 Name:		%{name}
 Version:	%{version}
