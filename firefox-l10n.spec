@@ -13,12 +13,12 @@
 %define prel 0
 %define oname firefox
 %define name %{oname}-l10n
-%define version 3.0.6
+%define version 3.0.7
 %define mozillalibdir %{_libdir}/%{oname}-%{version}
 
 %if %mdkversion == 200910
 # Cooker
-%define release %mkrel 2
+%define release %mkrel 1
 %else
 # Old distros
 %define subrel 1
