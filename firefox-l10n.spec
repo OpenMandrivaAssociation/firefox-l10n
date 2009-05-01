@@ -13,10 +13,10 @@
 %define prel 0
 %define oname firefox
 %define name %{oname}-l10n
-%define version 3.0.8
+%define version 3.0.10
 %define mozillalibdir %{_libdir}/%{oname}-%{version}
 
-%if %mdkversion == 200910
+%if %mandriva_branch == Cooker
 # Cooker
 %define release %mkrel 1
 %else
