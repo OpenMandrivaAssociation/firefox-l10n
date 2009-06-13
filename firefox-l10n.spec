@@ -197,7 +197,6 @@ Source0:	%{name}-template.spec
 	done\
 	)
 }
-Patch0:		fix-sq-invalid-rdf.patch
 BuildRequires:	libxml2-utils
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -257,10 +256,6 @@ done
 # Patches
 cd ${language_fy}
 sed -i 's/\x0D//g;/^$/d' install.rdf
-cd ..
-
-cd sq
-%patch0 -p0
 cd ..
 
 %build
