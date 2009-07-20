@@ -18,7 +18,7 @@
 
 %if %mdkversion > 200910
 # Cooker
-%define release %mkrel 1
+%define release %mkrel 2
 %else
 # Old distros
 %define subrel 1
