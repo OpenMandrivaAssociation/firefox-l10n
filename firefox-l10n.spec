@@ -13,7 +13,7 @@
 %define prel 0
 %define oname firefox
 %define name %{oname}-l10n
-%define version 3.0.12
+%define version 3.0.13
 %define mozillalibdir %{_libdir}/%{oname}-%{version}
 
 %if %mdkversion > 200910
