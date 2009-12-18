@@ -14,11 +14,11 @@
 %define oname firefox
 %define name %{oname}-l10n
 %define version 3.6
-%define mozillalibdir %{_libdir}/%{oname}-%{version}b4
+%define mozillalibdir %{_libdir}/%{oname}-%{version}b5
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel 1
+%define release %mkrel 1.b5
 %else
 # Old distros
 %define subrel 1
@@ -39,7 +39,7 @@
 # uu br_FR
 
 # Disabled myspell dicts, for any reason
-%define disabled_dict_langlist	ar be bn br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko ku mk mn pa_IN te tr zh_CN zh_TW
+%define disabled_dict_langlist	ar be bn br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko mk pa_IN te tr zh_CN zh_TW
 
 # Language descriptions
 %define language_ar ar
