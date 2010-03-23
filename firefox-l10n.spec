@@ -13,18 +13,17 @@
 %define prel 0
 %define oname firefox
 %define name %{oname}-l10n
-%define version 3.6
+%define version 3.6.2
 %define mozillalibdir %{_libdir}/%{oname}-%{version}
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel 3
+%define release %mkrel 1
 %else
 # Old distros
 %define subrel 1
 %define release %mkrel 0
 %endif
-
 
 %if %{prel}
 %define xpidir http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}%{prel}/linux-i686/xpi/
