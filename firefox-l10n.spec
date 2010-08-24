@@ -14,11 +14,11 @@
 %define oname firefox
 %define name %{oname}-l10n
 %define version 4.0
-%define mozillalibdir %{_libdir}/%{oname}-%{version}
+%define mozillalibdir %{_libdir}/%{oname}-%{version}%prel
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel -c %prel 1
+%define release %mkrel -c %prel 2
 %else
 # Old distros
 %define subrel 1
