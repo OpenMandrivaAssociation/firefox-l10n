@@ -10,7 +10,7 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
-%define prel b4
+%define prel b5
 %define oname firefox
 %define name %{oname}-l10n
 %define version 4.0
