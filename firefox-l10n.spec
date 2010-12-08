@@ -18,7 +18,7 @@
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel -c %prel 1
+%define release %mkrel -c %prel 2
 %else
 # Old distros
 %define subrel 1
@@ -32,13 +32,13 @@
 %endif
 
 # Supported l10n language lists
-%define langlist	ar af be bg bn ca cs cy da de el en_GB eo es_ES es_AR et eu fi fr fy ga_IE gl gu_IN he hi hu id is it ja ko kn lt lv mk mr nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru si sk sl sq sv_SE te th tr uk zh_CN zh_TW
+%define langlist	ar af be bg bn br ca cs cy da de el en_GB eo es_ES es_AR et eu fi fr fy ga_IE gl gu_IN he hi hu id is it ja ko kn lt lv mk mr nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru si sk sl sq sv_SE te th tr uk zh_CN zh_TW
 
 # Disabled l10n languages, for any reason
 # uu br_FR
 
 # Disabled myspell dicts, for any reason
-%define disabled_dict_langlist	ar be bn br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko mk pa_IN te tr zh_CN zh_TW
+%define disabled_dict_langlist	ar be bn br br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko mk pa_IN te tr zh_CN zh_TW
 
 # Language descriptions
 %define language_ar ar
@@ -51,8 +51,8 @@
 %define langname_bg Bulgarian
 %define language_bn bn-IN
 %define langname_bn Bengali
-%define language_br_FR br-FR
-%define langname_br_FR Breton
+%define language_br br
+%define langname_br Breton
 %define language_ca ca
 %define langname_ca Catalan
 %define language_cs cs
