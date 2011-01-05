@@ -10,7 +10,7 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 
-%define prel b7
+%define prel b8
 %define oname firefox
 %define name %{oname}-l10n
 %define version 4.0
@@ -18,7 +18,7 @@
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel -c %prel 2
+%define release %mkrel -c %prel 1
 %else
 # Old distros
 %define subrel 1
