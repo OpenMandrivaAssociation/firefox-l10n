@@ -176,7 +176,7 @@ License:	GPL
 Group:		Networking/WWW
 Url:		http://www.mozilla.org/
 # Language package template
-Source0:	%{name}-template.spec
+Source0:	%{name}-template.in
 # l10n sources
 %{expand:%(\
 	i=1; \
@@ -195,7 +195,7 @@ Localizations for Firefox web browser.
 # Expand all languages packages.
 %{expand:%(\
 	for lang in %langlist; do\
-		echo "%%{expand:%%(sed "s!__LANG__!$lang!g" %{_sourcedir}/%{name}-template.spec 2> /dev/null)}";\
+		echo "%%{expand:%%(sed "s!__LANG__!$lang!g" %{_sourcedir}/%{name}-template.in 2> /dev/null)}";\
 	done\
 	)
 }
