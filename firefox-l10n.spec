@@ -219,7 +219,7 @@ for lang in %langlist; do
 	# l10n
 	mkdir ${language}
 	cd ${language}
-	unzip %{_sourcedir}/${language}.xpi
+	unzip -qq %{_sourcedir}/${language}.xpi
 	cd ..
 
 	# dict
