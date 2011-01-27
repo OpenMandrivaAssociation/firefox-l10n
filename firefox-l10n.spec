@@ -7,14 +7,10 @@
 # This also means only STABLE upstream releases, NO betas.
 # This is a discussed topic. Please, do not flame it again.
 
-%define _enable_debug_packages %{nil}
-%define debug_package %{nil}
-
-%define prel b9
+%define prel b10
 %define oname firefox
 %define name %{oname}-l10n
 %define version 4.0
-%define mozillalibdir %{_libdir}/%{oname}-%{version}%prel
 
 %if %mandriva_branch == Cooker
 # Cooker
@@ -187,6 +183,8 @@ Source0:	%{name}-template.in
 	)
 }
 BuildRequires:	libxml2-utils
+BuildRequires:	firefox-devel
+BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -227,19 +225,6 @@ for lang in %langlist; do
 	dict=${!dict}
 	[ $dict -eq 0 ] && continue
 
-	mkdir -p ${language}-dict/dictionaries
-	cd ${language}-dict
-	if [ -e %{_datadir}/dict/ooo/$lang.aff ]; then
-		ln -s %{_datadir}/dict/ooo/$lang.aff ./dictionaries/$language.aff
-		ln -s %{_datadir}/dict/ooo/$lang.dic ./dictionaries/$language.dic
-	elif [ -e %{_datadir}/dict/ooo/$locale.aff ]; then
-		ln -s %{_datadir}/dict/ooo/$locale.aff ./dictionaries/$language.aff
-		ln -s %{_datadir}/dict/ooo/$locale.dic ./dictionaries/$language.dic
-	else
-		ln -s %{_datadir}/dict/ooo/${locale}_*.aff ./dictionaries/$language.aff
-		ln -s %{_datadir}/dict/ooo/${locale}_*.dic ./dictionaries/$language.dic
-	fi
-	cd ..
 done
 
 # Patches
@@ -265,17 +250,10 @@ for lang in %langlist; do
 
 	# l10n
 	cd $language
-	mkdir -p %buildroot%{mozillalibdir}/extensions/langpack-${language}@firefox.mozilla.org/
-	cp -f -r * %buildroot%{mozillalibdir}/extensions/langpack-${language}@firefox.mozilla.org/
+	mkdir -p %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org/
+	cp -f -r * %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org/
 	cd ..
 
-	# Dicts
-	dict="dict_$lang"
-	dict=${!dict}
-	[ $dict -eq 0 ] && continue
-
-	cp -af $language-dict/dictionaries/*.{aff,dic} \
-		%buildroot%{mozillalibdir}/dictionaries/
 done
 
 %clean
