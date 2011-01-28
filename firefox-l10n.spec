@@ -182,7 +182,6 @@ Source0:	%{name}-template.in
 	done\
 	)
 }
-BuildRequires:	libxml2-utils
 BuildRequires:	firefox-devel
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -206,36 +205,6 @@ Localizations for Firefox web browser.
 %{expand:%(for lang in %langlist; do echo "locale_$lang=%%{locale_$lang}"; done)}
 %{expand:%(for lang in %langlist; do echo "dict_$lang=%%{with_dict_$lang}"; done)}
 
-# Unpack all languages
-for lang in %langlist; do
-	language="language_$lang"
-	language=${!language}
-
-	locale="locale_$lang"
-	locale=${!locale}
-
-	# l10n
-	mkdir ${language}
-	cd ${language}
-	unzip -qq %{_sourcedir}/${language}.xpi
-	cd ..
-
-	# dict
-	dict="dict_$lang"
-	dict=${!dict}
-	[ $dict -eq 0 ] && continue
-
-done
-
-# Patches
-cd ${language_fy}
-sed -i 's/\x0D//g;/^$/d' install.rdf
-cd ..
-
-%build
-# All install.rdf files must validate
-xmllint --noout */install.rdf
-
 %install
 rm -rf %{buildroot}
 
@@ -249,10 +218,8 @@ for lang in %langlist; do
 	language=${!language}
 
 	# l10n
-	cd $language
 	mkdir -p %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org/
-	cp -f -r * %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org/
-	cd ..
+	cp %_sourcedir/${language}.xpi  %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org/langpack-${language}@firefox.mozilla.org.xpi
 
 done
 
