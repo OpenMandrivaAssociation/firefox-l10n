@@ -14,7 +14,7 @@
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel -c %prel 1
+%define release %mkrel -c %prel 2
 %else
 # Old distros
 %define subrel 1
@@ -28,7 +28,7 @@
 %endif
 
 # Supported l10n language lists
-%define langlist	ar af be bg bn br ca cs cy da de el en_GB eo es_ES es_AR et eu fi fr fy ga_IE gl gu_IN he hi hu id is it ja ko kn lt lv mk mr nb_NO nn_NO nl pa_IN pl pt_PT pt_BR ro ru si sk sl sq sv_SE te th tr uk zh_CN zh_TW
+%define langlist	ar af ast be bg bn br ca cs cy da de el en_GB eo es_ES es_AR et eu fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk ko kn ku lg lt lv mai mk ml mr nb_NO nn_NO nl nso or pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE ta te th tr uk zh_CN zh_TW
 
 # Disabled l10n languages, for any reason
 # uu br_FR
@@ -39,6 +39,8 @@
 # Language descriptions
 %define language_ar ar
 %define langname_ar Arabic
+%define language_ast ast
+%define langname_ast Asturian
 %define language_af af
 %define langname_af Afrikaans
 %define language_be be
@@ -81,6 +83,8 @@
 %define langname_fy Frisian
 %define language_ga_IE ga-IE
 %define langname_ga_IE Irish
+%define language_gd gd
+%define langname_gd Scottish Gaelic
 %define language_gl gl
 %define langname_gl Galician
 %define language_gu_IN gu-IN
@@ -89,8 +93,12 @@
 %define langname_he Hebrew
 %define language_hi hi-IN
 %define langname_hi Hindi
+%define language_hr hr
+%define langname_hr Croatian
 %define language_hu hu
 %define langname_hu Hungarian
+%define language_hy hy-AM
+%define langname_hy Armenian
 %define language_id id
 %define langname_id Indonesian
 %define language_is is
@@ -99,16 +107,26 @@
 %define langname_it Italian
 %define language_ja ja
 %define langname_ja Japanese
+%define language_kk kk
+%define langname_kk Kazakh
 %define language_ko ko
 %define langname_ko Korean
 %define language_kn kn
 %define langname_kn Kannada
+%define language_ku ku
+%define langname_ku Kurdish
+%define language_lg lg
+%define langname_lg Ganda
 %define language_lt lt
 %define langname_lt Lithuanian
 %define language_lv lv
 %define langname_lv Latvian
+%define language_mai mai
+%define langname_mai Maithili
 %define language_mk mk
 %define langname_mk Macedonian
+%define language_ml ml
+%define langname_ml Malayalam
 %define language_mr mr
 %define langname_mr Marathi
 %define language_nb_NO nb-NO
@@ -117,6 +135,10 @@
 %define langname_nn_NO Norwegian Nynorsk
 %define language_nl nl
 %define langname_nl Dutch
+%define language_nso nso
+%define langname_nso Northern Sotho
+%define language_or or
+%define langname_or Oriya
 %define language_pa_IN pa-IN
 %define langname_pa_IN Punjabi (gurmukhi)
 %define language_pl pl
@@ -137,8 +159,12 @@
 %define langname_sl Slovenian
 %define language_sq sq
 %define langname_sq Shqipe
+%define language_sr sr
+%define langname_sr Serbian
 %define language_sv_SE sv-SE
 %define langname_sv_SE Swedish
+%define language_ta ta
+%define langname_ta Tamil
 %define language_te te
 %define langname_te Telugu
 %define language_th th
@@ -197,20 +223,11 @@ Localizations for Firefox web browser.
 	)
 }
 
-%prep
-%setup -q -c -T
-
-# Convert rpm macros to bash variables
-%{expand:%(for lang in %langlist; do echo "language_$lang=%%{language_$lang}"; done)}
-%{expand:%(for lang in %langlist; do echo "locale_$lang=%%{locale_$lang}"; done)}
-%{expand:%(for lang in %langlist; do echo "dict_$lang=%%{with_dict_$lang}"; done)}
-
 %install
 rm -rf %{buildroot}
 
 # Convert rpm macros to bash variables
 %{expand:%(for lang in %langlist; do echo "language_$lang=%%{language_$lang}"; done)}
-%{expand:%(for lang in %langlist; do echo "dict_$lang=%%{with_dict_$lang}"; done)}
 
 # Install all languages
 for lang in %langlist; do
