@@ -196,7 +196,7 @@ Version:	%{version}
 Release:	%{release}
 License:	GPL
 Group:		Networking/WWW
-Url:		http://www.mozilla.org/
+Url:		http://www.firefox.com/
 # Language package template
 Source0:	%{name}-template.in
 # l10n sources
