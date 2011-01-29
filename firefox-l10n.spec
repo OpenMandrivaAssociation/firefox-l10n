@@ -14,7 +14,7 @@
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel -c %prel 2
+%define release %mkrel -c %prel 3
 %else
 # Old distros
 %define subrel 1
@@ -229,14 +229,15 @@ rm -rf %{buildroot}
 # Convert rpm macros to bash variables
 %{expand:%(for lang in %langlist; do echo "language_$lang=%%{language_$lang}"; done)}
 
+mkdir -p %buildroot%{firefox_extdir}/
+
 # Install all languages
 for lang in %langlist; do
 	language="language_$lang"
 	language=${!language}
 
 	# l10n
-	mkdir -p %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org/
-	cp %_sourcedir/${language}.xpi  %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org/langpack-${language}@firefox.mozilla.org.xpi
+	cp %_sourcedir/${language}.xpi  %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org.xpi
 
 done
 
