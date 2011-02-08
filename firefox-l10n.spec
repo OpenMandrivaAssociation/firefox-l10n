@@ -7,14 +7,14 @@
 # This also means only STABLE upstream releases, NO betas.
 # This is a discussed topic. Please, do not flame it again.
 
-%define prel b10
+%define prel b11
 %define oname firefox
 %define name %{oname}-l10n
 %define version 4.0
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel -c %prel 3
+%define release %mkrel -c %prel 1
 %else
 # Old distros
 %define subrel 1
