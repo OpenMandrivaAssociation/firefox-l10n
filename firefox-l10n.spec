@@ -7,7 +7,7 @@
 # This also means only STABLE upstream releases, NO betas.
 # This is a discussed topic. Please, do not flame it again.
 
-%define prel b11
+%define prel b12
 %define oname firefox
 %define name %{oname}-l10n
 %define version 4.0
@@ -28,7 +28,7 @@
 %endif
 
 # Supported l10n language lists
-%define langlist	ar af ast be bg bn br ca cs cy da de el en_GB eo es_ES es_AR et eu fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk ko kn ku lg lt lv mai mk ml mr nb_NO nn_NO nl nso or pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE ta te th tr uk zh_CN zh_TW
+%define langlist	ar af ast be bg bn br bs ca cs cy da de el en_GB eo es_ES es_AR et eu fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk ko kn ku lg lt lv mai mk ml mr nb_NO nn_NO nl nso or pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE ta te th tr uk zh_CN zh_TW zu
 
 # Disabled l10n languages, for any reason
 # uu br_FR
@@ -51,6 +51,8 @@
 %define langname_bn Bengali
 %define language_br br
 %define langname_br Breton
+%define language_bs bs
+%define langname_bs Bosnian
 %define language_ca ca
 %define langname_ca Catalan
 %define language_cs cs
@@ -179,6 +181,8 @@
 %define langname_zh_CN Simplified Chinese
 %define language_zh_TW zh-TW
 %define langname_zh_TW Traditional Chinese
+%define language_zu zu
+%define langname_zu Zulu
 
 # --- Danger line ---
 
