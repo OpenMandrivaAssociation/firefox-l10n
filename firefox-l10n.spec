@@ -7,25 +7,20 @@
 # This also means only STABLE upstream releases, NO betas.
 # This is a discussed topic. Please, do not flame it again.
 
-%define prel rc2
 %define oname firefox
 %define name %{oname}-l10n
 %define version 4.0
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel -c %prel 1
+%define release %mkrel 1
 %else
 # Old distros
 %define subrel 1
 %define release %mkrel 0
 %endif
 
-%if %{prel}
-%define xpidir http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}%{prel}/linux-i686/xpi/
-%else
 %define xpidir http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/xpi/
-%endif
 
 # Supported l10n language lists
 %define langlist	ar af ast be bg bn br bs ca cs cy da de el en_GB eo es_ES es_AR et eu fa fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk ko kn ku lg lt lv mai mk ml mr nb_NO nn_NO nl nso or pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE ta te th tr uk vi zh_CN zh_TW zu
