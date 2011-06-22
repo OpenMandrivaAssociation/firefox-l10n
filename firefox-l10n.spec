@@ -9,11 +9,11 @@
 
 %define oname firefox
 %define name %{oname}-l10n
-%define version 4.0.1
+%define version 5.0
 
 %if %mandriva_branch == Cooker
 # Cooker
-%define release %mkrel 1
+%define release 1
 %else
 # Old distros
 %define subrel 1
@@ -244,5 +244,3 @@ for lang in %langlist; do
 
 done
 
-%clean
-rm -rf %buildroot
