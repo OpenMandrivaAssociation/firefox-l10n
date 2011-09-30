@@ -9,7 +9,7 @@
 
 %define oname firefox
 %define name %{oname}-l10n
-%define version 6.0.2
+%define version 7.0.1
 
 %if %mandriva_branch == Cooker
 # Cooker
@@ -243,4 +243,3 @@ for lang in %langlist; do
 	cp %_sourcedir/${language}.xpi  %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org.xpi
 
 done
-
