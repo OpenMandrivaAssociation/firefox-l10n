@@ -9,7 +9,7 @@
 
 %define oname firefox
 %define name %{oname}-l10n
-%define version 8.0.1
+%define version 9.0
 
 %if %mandriva_branch == Cooker
 # Cooker
@@ -213,7 +213,6 @@ Source0:	%{name}-template.in
 }
 BuildRequires:	firefox-devel
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Localizations for Firefox web browser.
