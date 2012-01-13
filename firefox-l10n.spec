@@ -9,7 +9,7 @@
 
 %define oname firefox
 %define name %{oname}-l10n
-%define version 9.0
+%define version 9.0.1
 
 %if %mandriva_branch == Cooker
 # Cooker
