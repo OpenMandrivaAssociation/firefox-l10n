@@ -8,8 +8,6 @@
 # This is a discussed topic. Please, do not flame it again.
 
 %define oname firefox
-%define name %{oname}-l10n
-%define version 11.0
 
 %if %mandriva_branch == Cooker
 # Cooker
@@ -19,10 +17,10 @@
 %define subrel 1
 %define release %mkrel 0
 %endif
-
 %define xpidir http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/xpi/
 
 # Supported l10n language lists
+# discontinued languages bn-IN fy-NL hi-IN hy-AM
 %define langlist	af ar ast be bg bn_IN bn_BD br bs ca cs cy da de el en_GB en_ZA eo es_AR es_CL es_ES es_MX et eu fa fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk ko kn ku lg lt lv mai mk ml mr nb_NO nl nn_NO nso or pa_IN pl pt_BR pt_PT ro ru si sk sl sq sr sv_SE ta ta_LK te th tr uk vi zh_CN zh_TW zu
 
 # Disabled l10n languages, for any reason
@@ -211,8 +209,8 @@
 %{expand:%(for lang in %langlist; do echo "%%define locale_$lang `echo $lang | cut -d _ -f 1` "; done)}
 
 Summary:	Localizations for Firefox (virtual package)
-Name:		%{name}
-Version:	%{version}
+Name:		%{oname}-l10n
+Version:	12.0
 Release:	%{release}
 License:	GPL
 Group:		Networking/WWW
@@ -230,7 +228,6 @@ Source0:	%{name}-template.in
 }
 BuildRequires:	firefox-devel
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Localizations for Firefox web browser.
@@ -244,8 +241,6 @@ Localizations for Firefox web browser.
 }
 
 %install
-rm -rf %{buildroot}
-
 # Convert rpm macros to bash variables
 %{expand:%(for lang in %langlist; do echo "language_$lang=%%{language_$lang}"; done)}
 
