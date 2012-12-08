@@ -9,28 +9,20 @@
 
 %define oname firefox
 %define name %{oname}-l10n
-%define version 16.0.2
+%define version 17.0.1
 
-%if %mandriva_branch == Cooker
-# Cooker
 %define release 1
-%else
-# Old distros
-%define subrel 1
-%define release %mkrel 0
-%endif
 
 %define xpidir http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/xpi/
 
 # Supported l10n language lists
-%define langlist	af ar ast be bg bn_IN bn_BD br bs ca cs cy da de el en_GB en_ZA eo es_AR es_CL es_ES es_MX et eu fa fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk ko kn ku lg lt lv mai mk ml mr nb_NO nl nn_NO nso or pa_IN pl pt_BR pt_PT ro ru si sk sl sq sr sv_SE ta ta_LK te th tr uk vi zh_CN zh_TW zu
+%define langlist    ar af ast be bg bn_IN bn_BD br bs ca cs cy da de el en_GB en_ZA eo es_CL es_ES es_MX es_AR et eu fa fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk ko kn ku lg lt lv mai mk ml mr nb_NO nn_NO nl nso or pa_IN pl pt_PT pt_BR ro ru si sk sl sq sr sv_SE ta te th tr uk vi zh_CN zh_TW zu
 
 # Disabled l10n languages, for any reason
-# - no locales-XX package:
-# uu ak rm son
+# uu br_FR
 
 # Disabled myspell dicts, for any reason
-%define disabled_dict_langlist	ar be bn br br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko mk pa_IN te tr zh_CN zh_TW
+%define disabled_dict_langlist  ar be bn br br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko mk pa_IN te tr zh_CN zh_TW
 
 # Language descriptions
 %define language_ak ak
@@ -228,9 +220,9 @@ Source0:	%{name}-template.in
 	done\
 	)
 }
+Source500:	firefox-l10n.rpmlintrc
 BuildRequires:	firefox-devel
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Localizations for Firefox web browser.
@@ -244,19 +236,19 @@ Localizations for Firefox web browser.
 }
 
 %install
-rm -rf %{buildroot}
-
 # Convert rpm macros to bash variables
 %{expand:%(for lang in %langlist; do echo "language_$lang=%%{language_$lang}"; done)}
 
-mkdir -p %buildroot%{firefox_extdir}/
+mkdir -p %{buildroot}%{firefox_extdir}/
 
 # Install all languages
-for lang in %langlist; do
+for lang in %{langlist}; do
 	language="language_$lang"
 	language=${!language}
 
 	# l10n
-	cp %_sourcedir/${language}.xpi  %buildroot%{firefox_extdir}/langpack-${language}@firefox.mozilla.org.xpi
+	cp %{_sourcedir}/${language}.xpi %{buildroot}%{firefox_extdir}/langpack-${language}@firefox.mozilla.org.xpi
 
 done
+
+
