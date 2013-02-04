@@ -9,9 +9,9 @@
 
 %define oname firefox
 %define name %{oname}-l10n
-%define version 17.0.1
+%define version 18.0.1
 
-%define release 2
+%define release 1
 
 %define xpidir http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/xpi/
 
