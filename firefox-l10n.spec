@@ -9,7 +9,7 @@
 
 %define oname firefox
 %define name %{oname}-l10n
-%define version 18.0.2
+%define version 19.0
 
 %define release 1
 
