@@ -213,7 +213,7 @@
 
 Summary:	Localizations for Firefox (virtual package)
 Name:		%{oname}-l10n
-Version:	21.0
+Version:	22.0
 Release:	1
 License:	GPL
 Group:		Networking/WWW
