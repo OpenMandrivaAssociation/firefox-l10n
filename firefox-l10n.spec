@@ -8,30 +8,31 @@
 # This is a discussed topic. Please, do not flame it again.
 
 %define oname firefox
-%define xpidir http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/xpi/
+%define name %{oname}-l10n
+
+%define xpidir ftp://ftp.mozilla.org/pub/mozilla.org/firefox/releases/%{version}/linux-i686/xpi/
 
 # Supported l10n language lists
-%define langlist   ach af ak ar as ast be bg bn_BD bn_IN br bs ca cs csb cy da de el en_GB en_US en_ZA eo es_AR es_CL es_ES es_MX et eu fa ff fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk km kn ko ku lg lij lt lv mai mk ml mr nb_NO nn_NO nl nso or pa_IN pl pt_PT pt_BR rm ro ru si sk sl son sq sr sv_SE ta ta_LK te th tr uk vi zh_CN zh_TW zu
+%define langlist af ar as ast be bg bn_IN bn_BD br bs ca cs cy da de el en_GB en_ZA eo es_AR es_CL es_ES es_MX et eu fa fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk ko km kn ku lg lt lv mai mk ml mr nb_NO nl nn_NO nso or pa_IN pl pt_BR pt_PT ro ru si sk sl sq sr sv_SE ta ta_LK te th tr uk vi zh_CN zh_TW zu
 
 # Disabled l10n languages, for any reason
-# uu br_FR
+# - no locales-XX package:
+# uu ak rm son
 
-# Disabled myspell dicts, for any reason
-%define disabled_dict_langlist  ar be bn br br_FR es_AR eu fi fy gl gu_IN he id ja ka kn ko mk pa_IN te tr zh_CN zh_TW
+# Disabled hunspell dicts, for any reason
+%define disabled_dict_langlist bs fi ja lg ta_LK tr zh_CN zh_TW
 
 # Language descriptions
-%define language_ach ach
-%define langname_ach Acholi (Uganda)
-%define language_af af
-%define langname_af Afrikaans
 %define language_ak ak
 %define langname_ak Akan
 %define language_ar ar
 %define langname_ar Arabic
-%define language_as as
-%define langname_as Assamese
 %define language_ast ast
 %define langname_ast Asturian
+%define language_as as
+%define langname_as Assamese
+%define language_af af
+%define langname_af Afrikaans
 %define language_be be
 %define langname_be Belarusian
 %define language_bg bg
@@ -48,8 +49,6 @@
 %define langname_ca Catalan
 %define language_cs cs
 %define langname_cs Czech
-%define language_csb csb
-%define langname_csb Kashubian
 %define language_cy cy
 %define langname_cy Welsh
 %define language_da da
@@ -60,8 +59,6 @@
 %define langname_el Greek
 %define language_en_GB en-GB
 %define langname_en_GB British English
-%define language_en_US en-US
-%define langname_en_US American English
 %define language_en_ZA en-ZA
 %define langname_en_ZA English (South Africa)
 %define language_eo eo
@@ -80,8 +77,6 @@
 %define langname_eu Basque
 %define language_fa fa
 %define langname_fa Farsi
-%define language_ff ff
-%define langname_ff Fulfulde
 %define language_fi fi
 %define langname_fi Finnish
 %define language_fr fr
@@ -126,8 +121,6 @@
 %define langname_ku Kurdish
 %define language_lg lg
 %define langname_lg Ganda
-%define language_lij lij
-%define langname_lij Ligurian
 %define language_lt lt
 %define langname_lt Lithuanian
 %define language_lv lv
@@ -205,21 +198,22 @@
 
 # Defaults (all languages enabled by default)
 # dicts
-%{expand:%(for lang in %langlist; do echo "%%define with_dict_$lang 0"; done)}
-%{expand:%(for lang in %disabled_dict_langlist; do echo "%%define with_dict_$lang 0"; done)}
+%{expand:%(for lang in %{langlist}; do echo "%%define with_dict_$lang 1"; done)}
+%{expand:%(for lang in %{disabled_dict_langlist}; do echo "%%define with_dict_$lang 0"; done)}
 
 # Locales
-%{expand:%(for lang in %langlist; do echo "%%define locale_$lang `echo $lang | cut -d _ -f 1` "; done)}
+%{expand:%(for lang in %{langlist}; do echo "%%define locale_$lang `echo $lang | cut -d _ -f 1` "; done)}
 
 Summary:	Localizations for Firefox (virtual package)
-Name:		%{oname}-l10n
+Name:		%{name}
 Version:	23.0
 Release:	1
 License:	GPL
 Group:		Networking/WWW
-Url:		http://www.firefox.com/
+Url:		http://www.mozilla.org/firefox/organizations/
 # Language package template
 Source0:	%{name}-template.in
+Source500:	firefox-l10n.rpmlintrc
 # l10n sources
 %{expand:%(\
 	i=1; \
@@ -229,12 +223,12 @@ Source0:	%{name}-template.in
 	done\
 	)
 }
-Source500:	firefox-l10n.rpmlintrc
 BuildRequires:	firefox-devel
 BuildArch:	noarch
 
 %description
 Localizations for Firefox web browser.
+
 
 # Expand all languages packages.
 %{expand:%(\
@@ -246,7 +240,7 @@ Localizations for Firefox web browser.
 
 %install
 # Convert rpm macros to bash variables
-%{expand:%(for lang in %langlist; do echo "language_$lang=%%{language_$lang}"; done)}
+%{expand:%(for lang in %{langlist}; do echo "language_$lang=%%{language_$lang}"; done)}
 
 mkdir -p %{buildroot}%{firefox_extdir}/
 
@@ -259,5 +253,3 @@ for lang in %{langlist}; do
 	cp %{_sourcedir}/${language}.xpi %{buildroot}%{firefox_extdir}/langpack-${language}@firefox.mozilla.org.xpi
 
 done
-
-
