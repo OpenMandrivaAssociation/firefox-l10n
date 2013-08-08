@@ -8,10 +8,35 @@ Obsoletes:	firefox-beta-__LANG__ < 18
 Requires:	%{oname} = %{version}
 Requires:	locales-%{locale___LANG__}
 %if %{with_dict___LANG__}
-Requires:	hunspell-__LANG__
+%if __LANG__ == de
+Requires: myspell-de_DE
+%else # DE
+%if __LANG__ == fr
+Requires: myspell-fr_FR
+%else # FR
+Requires: myspell-__LANG__
+%endif # FR
+%endif # DE
 %endif # LANG
 %if __LANG__ == fi
-Requires:	%{oname}-ext-mozvoikko
+%endif
+%if __LANG__ == br_FR
+Obsoletes: %{oname}-br <= 2.0.0.4
+%endif
+%if __LANG__ == et
+Obsoletes: %{oname}-et_EE <= 3.0.1-6
+%endif
+%if __LANG__ == es_ES
+Obsoletes: %{oname}-es <= 2.0.0.4
+%endif
+%if __LANG__ == pt_PT
+Obsoletes: %{oname}-pt <= 2.0.0.4
+%endif
+%if __LANG__ == nb_NO
+Obsoletes: %{oname}-nb <= 2.0.0.4
+%endif
+%if __LANG__ == uk
+Obsoletes: %{oname}-uk_UA
 %endif
 
 %description -n %{oname}-__LANG__
