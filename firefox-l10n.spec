@@ -206,8 +206,8 @@
 
 Summary:	Localizations for Firefox (virtual package)
 Name:		%{name}
-Version:	23.0
-Release:	2
+Version:	23.0.1
+Release:	1
 License:	GPL
 Group:		Networking/WWW
 Url:		http://www.mozilla.org/firefox/organizations/

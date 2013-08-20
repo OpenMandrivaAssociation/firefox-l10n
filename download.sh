@@ -1,5 +1,5 @@
-langlist="af ar as ast be bg bn_IN bn_BD br bs ca cs cy da de el en_GB en_ZA eo es_AR es_CL es_ES es_MX et eu fa fi fr fy ga_IE gd gl gu_IN he hi hr hu hy id is it ja kk ko km kn ku lg lt lv mai mk ml mr nb_NO nl nn_NO nso or pa_IN pl pt_BR pt_PT ro ru si sk sl sq sr sv_SE ta ta_LK te th tr uk vi zh_CN zh_TW zu"
+langlist="ach af ar ak as ast be bg bn-IN bn-BD br bs ca cs csb cy da de el en-GB en-US en-ZA eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE gd gl gu-IN he hi-IN hr hu hy-AM id is it ja kk ko km kn ku lg lij lt lv mai mk ml mr nb-NO nl nn-NO nso or pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta ta-LK te th tr uk vi zh-CN zh-TW zu"
 
-fversion=23.0
+fversion=23.0.1
 
 for i in $langlist;do wget http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$fversion/linux-i686/xpi/$i.xpi;done
