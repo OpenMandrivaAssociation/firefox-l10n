@@ -19,8 +19,8 @@
 # - no locales-XX package:
 # uu ak rm son
 
-# Disabled hunspell dicts, for any reason
-%define disabled_dict_langlist bs fi ja lg ta_LK tr zh_CN zh_TW
+# Disabled hunspell dicts, for any reason (e.g. because there is no dictionary for the language)
+%define disabled_dict_langlist as ast be bs bn_BD bn_IN br es_AR es_CL fi gu_IN ja kk ko lg mai mk ml pa_IN ta_LK si sq sr te tr zh_CN zh_TW
 
 # Language descriptions
 %define language_ak ak
