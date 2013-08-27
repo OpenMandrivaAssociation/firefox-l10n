@@ -5,7 +5,7 @@ Group:		Networking/WWW
 Url:		http://www.mozilla.org/products/firefox/
 Obsoletes:	mozilla-firefox-__LANG__ < 3.0
 Obsoletes:	firefox-beta-__LANG__ < 18
-Requires:	%{oname} = %{version}
+Requires:	%{oname} = 0:%{version}
 Requires:	locales-%{locale___LANG__}
 %if %{with_dict___LANG__}
 %if __LANG__ == de
