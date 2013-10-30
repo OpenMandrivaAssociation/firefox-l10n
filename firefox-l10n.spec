@@ -206,7 +206,7 @@
 
 Summary:	Localizations for Firefox (virtual package)
 Name:		%{name}
-Version:	24.0
+Version:	25.0
 Release:	1
 License:	GPL
 Group:		Networking/WWW
